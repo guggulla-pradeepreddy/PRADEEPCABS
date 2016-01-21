@@ -1,0 +1,119 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<form name="customer">
+    <div class="form-group">
+        <label class="control-label" for="Firstname">Firstname</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="Firstname" class="form-control" id="firstname" placeholder="Firstname" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="Lastname">Lastname</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="Lastname" class="form-control" id="lastname" placeholder="Lastname" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="address">Address</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="address" class="form-control" id="address" placeholder="address" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="city">City</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="city" class="form-control" id="city" placeholder="city" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="state">State</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="state" class="form-control" id="state" placeholder="state" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="country">Country</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="country" class="form-control" id="country" placeholder="country" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="phonenumber">Phonenumber</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="phonenumber" class="form-control" id="phonenumber" placeholder="phonenumber" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="carddetais">Carddetails</label>
+        <div class="col-sm-9 pull-right">
+
+            <input type="text" name="carddetais" class="form-control" id="carddetails" placeholder="carddetails" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="username">Username</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="username" class="form-control" id="username" placeholder="username" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="password">Password</label>
+        <div class="col-sm-9 pull-right">
+            <input type="password" name="password" class="form-control" id="password" placeholder="password" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="btnsubmit">Submit</label>
+        <div class="col-sm-9 pull-right">
+            <input type="button" id="btnsubmit" name="btnsubmit" onclick="saveCustomer()" value="submit" />
+            </div>
+        </div>
+</form>
+
+<script type="text/javascript">
+    function saveCustomer() {
+        var Firstname = document.customer.firstname.value;
+        var Lastname = document.customer.lastname.value;
+        var Address = document.customer.address.value;
+        var City = document.customer.city.value;
+        var State = document.customer.state.value;
+        var Country = document.customer.country.value;
+        var Phonenumber = document.customer.phonenumber.value;
+        var Carddetails = document.customer.carddetails.value;
+        var Username = document.customer.username.value;
+        var Password = document.customer.password.value;
+        var data = {
+            "firstname":Firstname,
+            "lastname":Lastname,
+            "address":Address,
+            "city":City,
+            "state":State,
+            "country":Country,
+            "phoneno":Phonenumber,
+            "carddetails":Carddetails,
+            "username":Username,
+            "password":Password,
+        }
+        console.log(data);
+        alert("wait");
+        $.ajax({
+            url: "../api/customers/post-customer",
+            type:"POST",
+            contentType:'application/json',
+            dataType:'json',
+            data: JSON.stringify(data),
+            success: function (result) {
+                alert(result);
+            },
+            error: function (error) {
+                alert(error);
+            }
+
+            });
+    }
+</script>

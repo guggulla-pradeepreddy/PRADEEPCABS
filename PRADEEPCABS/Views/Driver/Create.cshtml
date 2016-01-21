@@ -1,0 +1,155 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create";
+    
+}
+
+<h2>Create</h2>
+<form name="driver">
+    
+    <div class="form-group">
+        <label class="control-label" for="vehicletype">Vehicletype</label>
+        <div class="col-sm-9 pull-right">
+            <select class="form-control" name="vehicletype" id="vehicletype">
+                <option value="">Select vehicletype</option>
+                <option value="sedan">sedan</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="licensetype">Typeoflicense</label>
+        <div class="col-sm-9 pull-right">
+            <select name="licensetype" id="licensetype" class="form-control">
+                <option value="">Select Licensetype</option>
+                <option value="sedan">heavy</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="licenseno">LicenseNo</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="licenseno" class="form-control" id="licenseno" placeholder="licenseno" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="carnumber">Carno</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="carnumber" class="form-control" id="carnumber" placeholder="carnumber" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="fname">Firstname</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="fname" class="form-control" id="fname" placeholder="firstname" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="lname">Lastname</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="lname" class="form-control" id="lname" placeholder="lastname" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="uname">Username</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="uname" class="form-control" id="uname" placeholder="username" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="password">Password</label>
+        <div class="col-sm-9 pull-right">
+            <input type="password" name="password" class="form-control" id="password" placeholder="password" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="address">Address</label>
+        <div class="col-sm-9 pull-right">
+       <input type="text" name="address" class="form-control" id="address" placeholder="address" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="city">City</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="city" class="form-control" id="city" placeholder="city" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="state">State</label>
+            <div class="col-sm-9 pull-right">
+                <input type="text" name="state" class="form-control" id="state" placeholder="state" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="phonenumber">Phonenumber</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="phonenumber" class="form-control" id="phonenumber" placeholder="phonenumber" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="fareforkilometer">Fareforkilometer</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="fareforkilometer" class="form-control" id="fareforkilometer" placeholder="fareforkilomete" />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label" for="btnsubmit">Submit</label>
+        <div class="col-sm-9 pull-right">
+            <input type="button" id="btnsubmit" name="btnsubmit" onclick="saveDriver()" value="submit" />
+
+        </div>
+    </div>
+  </form>
+  <script type="text/javascript">
+      function saveDriver()
+      {
+          var Vehicletype = document.driver.vehicletype.value;
+          var Typeoflicense = document.driver.licensetype.value;
+          var LicenseNo = document.driver.licenseno.value;
+          var Carno = document.driver.carnumber.value;
+          var Firstname = document.driver.fname.value;
+          var Lastname = document.driver.lname.value;
+          var Username = document.driver.uname.value;
+          var Password = document.driver.password.value;
+          var Address = document.driver.address.value;
+          var City = document.driver.city.value;
+          var State = document.driver.state.value;
+          var Phonenumber = document.driver.phonenumber.value;
+          var Fareforkilometer = document.driver.fareforkilometer.value;
+          var data = {
+
+              "vehicletype": Vehicletype,
+              "licenseno": LicenseNo,
+              "typeoflicense":Typeoflicense,
+              "carno": Carno,
+              "firstname": Firstname,
+              "lastname": Lastname,
+              "username": Username,
+              "password": Password,
+              "address": Address,
+              "city": City,
+              "state": State,
+              "phoneno": Phonenumber,
+              "fareforkilometer": Fareforkilometer,
+          }
+          console.log(data);
+          alert("wait");
+          $.ajax({
+              url: "../api/drivers/post-driver",
+              type: "POST",
+              contentType: 'application/json',
+              dataType: 'json',
+              data: JSON.stringify(data),
+              success: function (result) {
+                  alert(result);
+              },
+              error: function (error) {
+                  alert(error);
+              }
+
+          });
+         
+      }
+  </script>

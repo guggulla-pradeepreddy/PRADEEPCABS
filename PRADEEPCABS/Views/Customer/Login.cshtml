@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Login";
+    var message = ViewBag.Message;
+}
+
+<h2>Login</h2>
+<form method="post" class="form-horizontal" action="@Url.Action("Login","Customer")">
+    @if (message != null)
+    {
+    <p>@message</p>
+    }
+    <div class="form-group">
+        <label class="control-label" for="cname">Customer Name</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" class="form-control" name="cname" id="cname"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="pwd">Password</label>
+        <div class="col-sm-9 pull-right">
+            <input type="password" class="form-control" name="pwd" id="pwd" />
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary" value="submit"/>
+</form>
+

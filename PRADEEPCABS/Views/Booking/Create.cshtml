@@ -1,0 +1,93 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create";
+    var message = ViewBag.Message;
+    var driverId = ViewBag.DriverId;
+    var customerId = ViewBag.CustomerId;
+}
+
+<h2>Create</h2>
+<form name="booking">
+    <input type="hidden" value="@driverId" name="driverId" id="driverId"/>
+    <input type="hidden" value="@customerId" name="customerId" id="customerId"/>
+    <div style="display:none;"class="form-group">
+        <label class="control-label" for="Date">Date</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="date" class="form-control" id="date" placeholder="Date" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="From">From</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="from" class="form-control" id="from" placeholder="From" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="To">To</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="to" class="form-control" id="to" placeholder="To" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="Distance">Distance</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="distance" class="form-control" id="distance" placeholder="Distance" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="Totalfare">Totalfare</label>
+        <div class="col-sm-9 pull-right">
+            <input type="text" name="totalfare" class="form-control" id="totalfare" placeholder="Totalfare" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="vehicleType">VehicleType</label>
+        <div class="col-sm-9 pull-right">
+            <select name="vehicleType" id="vehicleType">
+                <option value="Sedan">Sedan</option>
+                <option value="Suv">Suv</option>
+                
+            </select>
+        </div>
+    </div>
+    <input type="button" id="btnsubmit" name="btnsubmit" value="submit" onclick="saveBooking()" />
+</form>
+<script type="text/javascript">
+    function saveBooking() {
+        var DriverId = document.booking.driverId.value;
+        var CustomerId = document.booking.customerId.value;
+        var Date = document.booking.date.value;
+        var From = document.booking.from.value;
+        var To = document.booking.to.value;
+        var Distance = document.booking.distance.value;
+        var Totalfare = document.booking.totalfare.value;
+        var Vehicletype = document.booking.vehicleType.value;
+        var data = {
+            "driverid": DriverId,
+            "customerid": CustomerId,
+            "date": Date,
+            "fromd": From,
+            "tod": To,
+            "distance": Distance,
+            "totalfare": Totalfare,
+            "vehicletype": Vehicletype
+        }
+        console.log(data);
+        alert("wait");
+        $.ajax({
+            url: "../api/bookings/post-booking",
+            type: "POST",
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(data),
+            success: function (result) {
+                alert(result);
+            },
+            error: function (error) {
+                alert(error);
+            }
+
+        });
+    }
+</script>

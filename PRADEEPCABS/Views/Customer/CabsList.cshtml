@@ -1,0 +1,45 @@
+﻿@using PRADEEPCABS.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home";
+    var message = ViewBag.Message;
+    var drivers = ViewBag.Drivers as List<DriverDto>;
+    int customerId = Convert.ToInt32(Session["customerId"]);
+}
+
+
+<h1>Welcome User!!!</h1>
+
+<table class="table table-responsive">
+    <tr>
+        <th>Vehicletype</th>
+        <th>Licenseno</th>
+        <th>Typeoflicense</th>
+        <th>carno</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Phoneno</th>
+        <th>Fareforkilometer</th>
+    </tr>
+    @foreach (var driver in drivers)
+    {
+
+        <tr>
+            <td>@driver.Vehicletype</td>
+            <td>@driver.Licenseno</td>
+            <td>@driver.Typeoflicense</td>
+            <td>@driver.Carno</td>
+            <td>@driver.Username</td>
+            <td>@driver.Address</td>
+            <td>@driver.City</td>
+            <td>@driver.State</td>
+            <td>@driver.Phoneno</td>
+            <td>@driver.Fareforkilometer</td>
+            <td><a href="@Url.Action("Create","Booking",new { driverId = driver.Driverid, customerId = customerId })">Book</a></td>
+        </tr>
+    }
+</table>
+
+
