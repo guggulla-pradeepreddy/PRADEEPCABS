@@ -6,7 +6,7 @@
 }
 
 <h2>Create</h2>
-<form name="driver">
+<form method="post" class="form-horizontal" action="@Url.Action("Create","Driver")">
     
     <div class="form-group">
         <label class="control-label" for="vehicletype">Vehicletype</label>
@@ -30,7 +30,7 @@
     <div class="form-group">
         <label class="control-label" for="licenseno">LicenseNo</label>
         <div class="col-sm-9 pull-right">
-            <input type="text" name="licenseno" class="form-control" id="licenseno" placeholder="licenseno" />
+          <input type="text" name="licenseno" class="form-control" id="licenseno" placeholder="licenseno" />
         </div>
     </div>
     <div class="form-group">
@@ -66,22 +66,22 @@
     <div class="form-group">
         <label class="control-label" for="address">Address</label>
         <div class="col-sm-9 pull-right">
-       <input type="text" name="address" class="form-control" id="address" placeholder="address" />
+            <input type="text" name="address" class="form-control" id="address" placeholder="address" />
         </div>
     </div>
     <div class="form-group">
         <label class="control-label" for="city">City</label>
         <div class="col-sm-9 pull-right">
-            <input type="text" name="city" class="form-control" id="city" placeholder="city" />
+             <input type="text" name="city" class="form-control" id="city" placeholder="city" />
         </div>
-        <div class="form-group">
-            <label class="control-label" for="state">State</label>
-            <div class="col-sm-9 pull-right">
-                <input type="text" name="state" class="form-control" id="state" placeholder="state" />
-            </div>
+     </div>
+     <div class="form-group">
+        <label class="control-label" for="state">State</label>
+        <div class="col-sm-9 pull-right">
+             <input type="text" name="state" class="form-control" id="state" placeholder="state" />
         </div>
     </div>
-    <div class="form-group">
+     <div class="form-group">
         <label class="control-label" for="phonenumber">Phonenumber</label>
         <div class="col-sm-9 pull-right">
             <input type="text" name="phonenumber" class="form-control" id="phonenumber" placeholder="phonenumber" />

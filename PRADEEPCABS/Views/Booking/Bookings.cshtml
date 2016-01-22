@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Bookings";
+    var message=ViewBag.message;
     int userId = Convert.ToInt32(Session["customerId"]);
 }
 
@@ -17,11 +18,11 @@
 
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
     <script>
-
         function formatItem(item) {
             return item.FromD + ' - ' + item.ToD + ' - ' + item.Totalfare + ' - '+ item.Date;
         }
-
+       
+        
         //var userId;
         $(document).ready(function () {
             // Send an AJAX request

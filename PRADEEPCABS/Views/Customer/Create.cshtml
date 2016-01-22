@@ -2,10 +2,11 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Create";
+    var message = ViewBag.message;
 }
 
 <h2>Create</h2>
-<form name="customer">
+<form method="post" class="form-horizontal" action="@Url.Action("Create","Customer")">
     <div class="form-group">
         <label class="control-label" for="Firstname">Firstname</label>
         <div class="col-sm-9 pull-right">
