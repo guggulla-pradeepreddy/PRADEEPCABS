@@ -8,6 +8,15 @@
     <div>
         <h2>All Bookings</h2>
         <ul id="bookings" />
+        <table id="bookingsTable" class="table table-bordered" >
+            <tr>
+             <th>FromD</th>
+             <th>ToD</th>
+             <th>Totalfare</th>
+            <th>Date</th>
+            </tr>
+        </table>
+        
     </div>
     <div>
         <h2>Search by ID</h2>
@@ -18,6 +27,7 @@
 
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
     <script>
+
         function formatItem(item) {
             return item.FromD + ' - ' + item.ToD + ' - ' + item.Totalfare + ' - '+ item.Date;
         }
@@ -31,7 +41,8 @@
                     // On success, 'data' contains a list of products.
                     $.each(data, function (key, item) {
                         // Add a list item for the product.
-                        $('<li>', { text: formatItem(item) }).appendTo($('#bookings'));
+                       // $('<li>', { text: formatItem(item) }).appendTo($('#bookings'));
+                        $('<tr><td>' + item.FromD + '</td><td>' + item.ToD + '</td><td>' + item.Totalfare + '</td><td>' + item.Date + '</td></tr>').appendTo($('#bookingsTable'));
                     });
                 });
         });

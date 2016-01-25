@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Bookings";
+    var message = ViewBag.message;
     int driverId = Convert.ToInt32(Session["driverId"]);
 }
 
@@ -7,6 +8,15 @@
 <div>
     <h2>All Bookings</h2>
     <ul id="bookings" />
+    <table id="bookingsTable" class="table table-bordered">
+            <tr>
+                <th>FromD</th>
+                <th>ToD</th>
+                <th>Totalfare</th>
+                <th>Date</th>
+            </tr>
+        
+    </table>
 </div>
 <div>
     <h2>Search by ID</h2>
@@ -30,7 +40,8 @@
                     // On success, 'data' contains a list of products.
                     $.each(data, function (key, item) {
                         // Add a list item for the product.
-                        $('<li>', { text: formatItem(item) }).appendTo($('#bookings'));
+                        //$('<li>', { text: formatItem(item) }).appendTo($('#bookings'));
+                        $('<tr><td>' + item.FromD + '</td><td>' + item.ToD + '</td><td>' + item.Totalfare + '</td><td>' + item.Date+'</td></tr>').appendTo($('#bookingsTable'));
                     });
                 });
         });
